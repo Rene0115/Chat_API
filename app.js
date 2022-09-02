@@ -7,8 +7,7 @@ import middleware from './middlewares/middlewares.js';
 const app = express();
 const logger = pino();
 
-middleware(app)
-logger.info('here')
+middleware(app);
 
 app.listen(process.env.PORT, () => {
   let port = process.env.PORT;
