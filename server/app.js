@@ -1,21 +1,10 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
-import express from 'express';
+import { Server } from 'socket.io';
 import pino from 'pino';
-import middleware from './middlewares/middlewares.js';
 
-const app = express();
 const logger = pino();
 
-middleware(app);
+const io = new Server(3000);
 
-app.listen(process.env.PORT, () => {
-  let port = process.env.PORT;
-  if (port == null || port === '') {
-    port = 8000;
-  }
-
-  logger.info(`Server is running on port ${port}`);
+io.on('connection', (socket) => {
+  logger.info(socket.id);
 });
-
-export default logger;
