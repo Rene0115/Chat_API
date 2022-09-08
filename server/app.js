@@ -11,6 +11,10 @@ const io = new Server(3000, {
 
 io.on('connection', (socket) => {
   logger.info(socket.id);
+  socket.on('send-message', (message) => {
+    socket.broadcast.emit('receive-message', message);
+    logger.info(message);
+  });
 });
 
 export default logger;
