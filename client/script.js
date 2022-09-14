@@ -20,7 +20,6 @@ socket.on('receive-message', (message) => {
   displayMessage(message);
 });
 
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const message = messageInput.value;
